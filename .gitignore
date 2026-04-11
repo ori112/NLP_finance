@@ -1,3 +1,37 @@
 /instructions
 /claude
 /CLAUDE.MD
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Data — never commit scraped HTML or large data files
+data/raw/transcripts/
+data/raw/html_cache/
+data/processed/*
+data/outputs/*
+# Keep directory structure intact on clone
+!data/processed/.gitkeep
+!data/outputs/.gitkeep
+
+# Secrets / env
+.env
+.env.*
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
