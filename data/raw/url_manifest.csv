@@ -1,0 +1,193 @@
+ticker,company,date,url,sector
+AAPL,Apple Inc.,2022-01-27,https://www.fool.com/earnings/call-transcripts/2022/01/27/apple-q1-2022-earnings-call-transcript/,Technology
+AAPL,Apple Inc.,2022-04-28,https://www.fool.com/earnings/call-transcripts/2022/04/28/apple-q2-2022-earnings-call-transcript/,Technology
+AAPL,Apple Inc.,2022-07-28,https://www.fool.com/earnings/call-transcripts/2022/07/28/apple-q3-2022-earnings-call-transcript/,Technology
+AAPL,Apple Inc.,2022-10-27,https://www.fool.com/earnings/call-transcripts/2022/10/27/apple-q4-2022-earnings-call-transcript/,Technology
+AAPL,Apple Inc.,2023-02-02,https://www.fool.com/earnings/call-transcripts/2023/02/02/apple-q1-2023-earnings-call-transcript/,Technology
+AAPL,Apple Inc.,2023-05-04,https://www.fool.com/earnings/call-transcripts/2023/05/04/apple-q2-2023-earnings-call-transcript/,Technology
+AAPL,Apple Inc.,2023-08-03,https://www.fool.com/earnings/call-transcripts/2023/08/03/apple-q3-2023-earnings-call-transcript/,Technology
+AAPL,Apple Inc.,2023-11-02,https://www.fool.com/earnings/call-transcripts/2023/11/02/apple-q4-2023-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2022-01-25,https://www.fool.com/earnings/call-transcripts/2022/01/25/microsoft-q2-2022-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2022-04-26,https://www.fool.com/earnings/call-transcripts/2022/04/26/microsoft-q3-2022-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2022-07-26,https://www.fool.com/earnings/call-transcripts/2022/07/26/microsoft-q4-2022-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2022-10-25,https://www.fool.com/earnings/call-transcripts/2022/10/25/microsoft-q1-2023-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2023-01-24,https://www.fool.com/earnings/call-transcripts/2023/01/24/microsoft-q2-2023-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2023-04-25,https://www.fool.com/earnings/call-transcripts/2023/04/25/microsoft-q3-2023-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2023-07-25,https://www.fool.com/earnings/call-transcripts/2023/07/25/microsoft-q4-2023-earnings-call-transcript/,Technology
+MSFT,Microsoft Corporation,2023-10-24,https://www.fool.com/earnings/call-transcripts/2023/10/24/microsoft-q1-2024-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2022-02-01,https://www.fool.com/earnings/call-transcripts/2022/02/01/alphabet-q4-2021-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2022-04-26,https://www.fool.com/earnings/call-transcripts/2022/04/26/alphabet-q1-2022-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2022-07-26,https://www.fool.com/earnings/call-transcripts/2022/07/26/alphabet-q2-2022-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2022-10-25,https://www.fool.com/earnings/call-transcripts/2022/10/25/alphabet-q3-2022-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2023-02-02,https://www.fool.com/earnings/call-transcripts/2023/02/02/alphabet-q4-2022-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2023-04-25,https://www.fool.com/earnings/call-transcripts/2023/04/25/alphabet-q1-2023-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2023-07-25,https://www.fool.com/earnings/call-transcripts/2023/07/25/alphabet-q2-2023-earnings-call-transcript/,Technology
+GOOGL,Alphabet Inc.,2023-10-24,https://www.fool.com/earnings/call-transcripts/2023/10/24/alphabet-q3-2023-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2022-02-02,https://www.fool.com/earnings/call-transcripts/2022/02/02/meta-platforms-q4-2021-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2022-04-27,https://www.fool.com/earnings/call-transcripts/2022/04/27/meta-platforms-q1-2022-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2022-07-27,https://www.fool.com/earnings/call-transcripts/2022/07/27/meta-platforms-q2-2022-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2022-10-26,https://www.fool.com/earnings/call-transcripts/2022/10/26/meta-platforms-q3-2022-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2023-02-01,https://www.fool.com/earnings/call-transcripts/2023/02/01/meta-platforms-q4-2022-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2023-04-26,https://www.fool.com/earnings/call-transcripts/2023/04/26/meta-platforms-q1-2023-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2023-07-26,https://www.fool.com/earnings/call-transcripts/2023/07/26/meta-platforms-q2-2023-earnings-call-transcript/,Technology
+META,Meta Platforms Inc.,2023-10-25,https://www.fool.com/earnings/call-transcripts/2023/10/25/meta-platforms-q3-2023-earnings-call-transcript/,Technology
+AMZN,Amazon.com Inc.,2022-02-03,https://www.fool.com/earnings/call-transcripts/2022/02/03/amazoncom-q4-2021-earnings-call-transcript/,Consumer Discretionary
+AMZN,Amazon.com Inc.,2022-04-28,https://www.fool.com/earnings/call-transcripts/2022/04/28/amazoncom-q1-2022-earnings-call-transcript/,Consumer Discretionary
+AMZN,Amazon.com Inc.,2022-07-28,https://www.fool.com/earnings/call-transcripts/2022/07/28/amazoncom-q2-2022-earnings-call-transcript/,Consumer Discretionary
+AMZN,Amazon.com Inc.,2022-10-27,https://www.fool.com/earnings/call-transcripts/2022/10/27/amazoncom-q3-2022-earnings-call-transcript/,Consumer Discretionary
+AMZN,Amazon.com Inc.,2023-02-02,https://www.fool.com/earnings/call-transcripts/2023/02/02/amazoncom-q4-2022-earnings-call-transcript/,Consumer Discretionary
+AMZN,Amazon.com Inc.,2023-04-27,https://www.fool.com/earnings/call-transcripts/2023/04/27/amazoncom-q1-2023-earnings-call-transcript/,Consumer Discretionary
+AMZN,Amazon.com Inc.,2023-08-03,https://www.fool.com/earnings/call-transcripts/2023/08/03/amazoncom-q2-2023-earnings-call-transcript/,Consumer Discretionary
+AMZN,Amazon.com Inc.,2023-10-26,https://www.fool.com/earnings/call-transcripts/2023/10/26/amazoncom-q3-2023-earnings-call-transcript/,Consumer Discretionary
+NVDA,NVIDIA Corporation,2022-02-16,https://www.fool.com/earnings/call-transcripts/2022/02/16/nvidia-q4-2022-earnings-call-transcript/,Technology
+NVDA,NVIDIA Corporation,2022-05-25,https://www.fool.com/earnings/call-transcripts/2022/05/25/nvidia-q1-2023-earnings-call-transcript/,Technology
+NVDA,NVIDIA Corporation,2022-08-24,https://www.fool.com/earnings/call-transcripts/2022/08/24/nvidia-q2-2023-earnings-call-transcript/,Technology
+NVDA,NVIDIA Corporation,2022-11-16,https://www.fool.com/earnings/call-transcripts/2022/11/16/nvidia-q3-2023-earnings-call-transcript/,Technology
+NVDA,NVIDIA Corporation,2023-02-22,https://www.fool.com/earnings/call-transcripts/2023/02/22/nvidia-q4-2023-earnings-call-transcript/,Technology
+NVDA,NVIDIA Corporation,2023-05-24,https://www.fool.com/earnings/call-transcripts/2023/05/24/nvidia-q1-2024-earnings-call-transcript/,Technology
+NVDA,NVIDIA Corporation,2023-08-23,https://www.fool.com/earnings/call-transcripts/2023/08/23/nvidia-q2-2024-earnings-call-transcript/,Technology
+NVDA,NVIDIA Corporation,2023-11-21,https://www.fool.com/earnings/call-transcripts/2023/11/21/nvidia-q3-2024-earnings-call-transcript/,Technology
+JPM,JPMorgan Chase & Co.,2022-01-14,https://www.fool.com/earnings/call-transcripts/2022/01/14/jpmorgan-chase-q4-2021-earnings-call-transcript/,Financials
+JPM,JPMorgan Chase & Co.,2022-04-13,https://www.fool.com/earnings/call-transcripts/2022/04/13/jpmorgan-chase-q1-2022-earnings-call-transcript/,Financials
+JPM,JPMorgan Chase & Co.,2022-07-14,https://www.fool.com/earnings/call-transcripts/2022/07/14/jpmorgan-chase-q2-2022-earnings-call-transcript/,Financials
+JPM,JPMorgan Chase & Co.,2022-10-14,https://www.fool.com/earnings/call-transcripts/2022/10/14/jpmorgan-chase-q3-2022-earnings-call-transcript/,Financials
+JPM,JPMorgan Chase & Co.,2023-01-13,https://www.fool.com/earnings/call-transcripts/2023/01/13/jpmorgan-chase-q4-2022-earnings-call-transcript/,Financials
+JPM,JPMorgan Chase & Co.,2023-04-14,https://www.fool.com/earnings/call-transcripts/2023/04/14/jpmorgan-chase-q1-2023-earnings-call-transcript/,Financials
+JPM,JPMorgan Chase & Co.,2023-07-14,https://www.fool.com/earnings/call-transcripts/2023/07/14/jpmorgan-chase-q2-2023-earnings-call-transcript/,Financials
+JPM,JPMorgan Chase & Co.,2023-10-13,https://www.fool.com/earnings/call-transcripts/2023/10/13/jpmorgan-chase-q3-2023-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2022-01-18,https://www.fool.com/earnings/call-transcripts/2022/01/18/goldman-sachs-q4-2021-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2022-04-14,https://www.fool.com/earnings/call-transcripts/2022/04/14/goldman-sachs-q1-2022-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2022-07-18,https://www.fool.com/earnings/call-transcripts/2022/07/18/goldman-sachs-q2-2022-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2022-10-18,https://www.fool.com/earnings/call-transcripts/2022/10/18/goldman-sachs-q3-2022-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2023-01-17,https://www.fool.com/earnings/call-transcripts/2023/01/17/goldman-sachs-q4-2022-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2023-04-18,https://www.fool.com/earnings/call-transcripts/2023/04/18/goldman-sachs-q1-2023-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2023-07-19,https://www.fool.com/earnings/call-transcripts/2023/07/19/goldman-sachs-q2-2023-earnings-call-transcript/,Financials
+GS,Goldman Sachs Group Inc.,2023-10-17,https://www.fool.com/earnings/call-transcripts/2023/10/17/goldman-sachs-q3-2023-earnings-call-transcript/,Financials
+JNJ,Johnson & Johnson,2022-01-25,https://www.fool.com/earnings/call-transcripts/2022/01/25/johnson-johnson-q4-2021-earnings-call-transcript/,Healthcare
+JNJ,Johnson & Johnson,2022-04-19,https://www.fool.com/earnings/call-transcripts/2022/04/19/johnson-johnson-q1-2022-earnings-call-transcript/,Healthcare
+JNJ,Johnson & Johnson,2022-07-19,https://www.fool.com/earnings/call-transcripts/2022/07/19/johnson-johnson-q2-2022-earnings-call-transcript/,Healthcare
+JNJ,Johnson & Johnson,2022-10-18,https://www.fool.com/earnings/call-transcripts/2022/10/18/johnson-johnson-q3-2022-earnings-call-transcript/,Healthcare
+JNJ,Johnson & Johnson,2023-01-24,https://www.fool.com/earnings/call-transcripts/2023/01/24/johnson-johnson-q4-2022-earnings-call-transcript/,Healthcare
+JNJ,Johnson & Johnson,2023-04-18,https://www.fool.com/earnings/call-transcripts/2023/04/18/johnson-johnson-q1-2023-earnings-call-transcript/,Healthcare
+JNJ,Johnson & Johnson,2023-07-20,https://www.fool.com/earnings/call-transcripts/2023/07/20/johnson-johnson-q2-2023-earnings-call-transcript/,Healthcare
+JNJ,Johnson & Johnson,2023-10-17,https://www.fool.com/earnings/call-transcripts/2023/10/17/johnson-johnson-q3-2023-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2022-01-19,https://www.fool.com/earnings/call-transcripts/2022/01/19/unitedhealth-group-q4-2021-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2022-04-14,https://www.fool.com/earnings/call-transcripts/2022/04/14/unitedhealth-group-q1-2022-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2022-07-15,https://www.fool.com/earnings/call-transcripts/2022/07/15/unitedhealth-group-q2-2022-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2022-10-14,https://www.fool.com/earnings/call-transcripts/2022/10/14/unitedhealth-group-q3-2022-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2023-01-13,https://www.fool.com/earnings/call-transcripts/2023/01/13/unitedhealth-group-q4-2022-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2023-04-14,https://www.fool.com/earnings/call-transcripts/2023/04/14/unitedhealth-group-q1-2023-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2023-07-14,https://www.fool.com/earnings/call-transcripts/2023/07/14/unitedhealth-group-q2-2023-earnings-call-transcript/,Healthcare
+UNH,UnitedHealth Group Inc.,2023-10-13,https://www.fool.com/earnings/call-transcripts/2023/10/13/unitedhealth-group-q3-2023-earnings-call-transcript/,Healthcare
+XOM,Exxon Mobil Corporation,2022-01-28,https://www.fool.com/earnings/call-transcripts/2022/01/28/exxon-mobil-q4-2021-earnings-call-transcript/,Energy
+XOM,Exxon Mobil Corporation,2022-04-29,https://www.fool.com/earnings/call-transcripts/2022/04/29/exxon-mobil-q1-2022-earnings-call-transcript/,Energy
+XOM,Exxon Mobil Corporation,2022-07-29,https://www.fool.com/earnings/call-transcripts/2022/07/29/exxon-mobil-q2-2022-earnings-call-transcript/,Energy
+XOM,Exxon Mobil Corporation,2022-10-28,https://www.fool.com/earnings/call-transcripts/2022/10/28/exxon-mobil-q3-2022-earnings-call-transcript/,Energy
+XOM,Exxon Mobil Corporation,2023-01-31,https://www.fool.com/earnings/call-transcripts/2023/01/31/exxon-mobil-q4-2022-earnings-call-transcript/,Energy
+XOM,Exxon Mobil Corporation,2023-04-28,https://www.fool.com/earnings/call-transcripts/2023/04/28/exxon-mobil-q1-2023-earnings-call-transcript/,Energy
+XOM,Exxon Mobil Corporation,2023-07-28,https://www.fool.com/earnings/call-transcripts/2023/07/28/exxon-mobil-q2-2023-earnings-call-transcript/,Energy
+XOM,Exxon Mobil Corporation,2023-10-27,https://www.fool.com/earnings/call-transcripts/2023/10/27/exxon-mobil-q3-2023-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2022-01-28,https://www.fool.com/earnings/call-transcripts/2022/01/28/chevron-q4-2021-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2022-04-29,https://www.fool.com/earnings/call-transcripts/2022/04/29/chevron-q1-2022-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2022-07-29,https://www.fool.com/earnings/call-transcripts/2022/07/29/chevron-q2-2022-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2022-10-28,https://www.fool.com/earnings/call-transcripts/2022/10/28/chevron-q3-2022-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2023-01-27,https://www.fool.com/earnings/call-transcripts/2023/01/27/chevron-q4-2022-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2023-04-28,https://www.fool.com/earnings/call-transcripts/2023/04/28/chevron-q1-2023-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2023-08-04,https://www.fool.com/earnings/call-transcripts/2023/08/04/chevron-q2-2023-earnings-call-transcript/,Energy
+CVX,Chevron Corporation,2023-11-03,https://www.fool.com/earnings/call-transcripts/2023/11/03/chevron-q3-2023-earnings-call-transcript/,Energy
+WMT,Walmart Inc.,2022-02-17,https://www.fool.com/earnings/call-transcripts/2022/02/17/walmart-q4-2022-earnings-call-transcript/,Consumer Staples
+WMT,Walmart Inc.,2022-05-17,https://www.fool.com/earnings/call-transcripts/2022/05/17/walmart-q1-2023-earnings-call-transcript/,Consumer Staples
+WMT,Walmart Inc.,2022-08-16,https://www.fool.com/earnings/call-transcripts/2022/08/16/walmart-q2-2023-earnings-call-transcript/,Consumer Staples
+WMT,Walmart Inc.,2022-11-15,https://www.fool.com/earnings/call-transcripts/2022/11/15/walmart-q3-2023-earnings-call-transcript/,Consumer Staples
+WMT,Walmart Inc.,2023-02-21,https://www.fool.com/earnings/call-transcripts/2023/02/21/walmart-q4-2023-earnings-call-transcript/,Consumer Staples
+WMT,Walmart Inc.,2023-05-18,https://www.fool.com/earnings/call-transcripts/2023/05/18/walmart-q1-2024-earnings-call-transcript/,Consumer Staples
+WMT,Walmart Inc.,2023-08-17,https://www.fool.com/earnings/call-transcripts/2023/08/17/walmart-q2-2024-earnings-call-transcript/,Consumer Staples
+WMT,Walmart Inc.,2023-11-16,https://www.fool.com/earnings/call-transcripts/2023/11/16/walmart-q3-2024-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2022-01-19,https://www.fool.com/earnings/call-transcripts/2022/01/19/procter-gamble-q2-2022-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2022-04-20,https://www.fool.com/earnings/call-transcripts/2022/04/20/procter-gamble-q3-2022-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2022-07-29,https://www.fool.com/earnings/call-transcripts/2022/07/29/procter-gamble-q4-2022-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2022-10-19,https://www.fool.com/earnings/call-transcripts/2022/10/19/procter-gamble-q1-2023-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2023-01-19,https://www.fool.com/earnings/call-transcripts/2023/01/19/procter-gamble-q2-2023-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2023-04-21,https://www.fool.com/earnings/call-transcripts/2023/04/21/procter-gamble-q3-2023-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2023-07-28,https://www.fool.com/earnings/call-transcripts/2023/07/28/procter-gamble-q4-2023-earnings-call-transcript/,Consumer Staples
+PG,Procter & Gamble Co.,2023-10-18,https://www.fool.com/earnings/call-transcripts/2023/10/18/procter-gamble-q1-2024-earnings-call-transcript/,Consumer Staples
+BA,Boeing Company,2022-01-26,https://www.fool.com/earnings/call-transcripts/2022/01/26/boeing-q4-2021-earnings-call-transcript/,Industrials
+BA,Boeing Company,2022-04-27,https://www.fool.com/earnings/call-transcripts/2022/04/27/boeing-q1-2022-earnings-call-transcript/,Industrials
+BA,Boeing Company,2022-07-27,https://www.fool.com/earnings/call-transcripts/2022/07/27/boeing-q2-2022-earnings-call-transcript/,Industrials
+BA,Boeing Company,2022-10-26,https://www.fool.com/earnings/call-transcripts/2022/10/26/boeing-q3-2022-earnings-call-transcript/,Industrials
+BA,Boeing Company,2023-01-25,https://www.fool.com/earnings/call-transcripts/2023/01/25/boeing-q4-2022-earnings-call-transcript/,Industrials
+BA,Boeing Company,2023-04-26,https://www.fool.com/earnings/call-transcripts/2023/04/26/boeing-q1-2023-earnings-call-transcript/,Industrials
+BA,Boeing Company,2023-07-26,https://www.fool.com/earnings/call-transcripts/2023/07/26/boeing-q2-2023-earnings-call-transcript/,Industrials
+BA,Boeing Company,2023-10-25,https://www.fool.com/earnings/call-transcripts/2023/10/25/boeing-q3-2023-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2022-01-28,https://www.fool.com/earnings/call-transcripts/2022/01/28/caterpillar-q4-2021-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2022-04-29,https://www.fool.com/earnings/call-transcripts/2022/04/29/caterpillar-q1-2022-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2022-08-02,https://www.fool.com/earnings/call-transcripts/2022/08/02/caterpillar-q2-2022-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2022-10-28,https://www.fool.com/earnings/call-transcripts/2022/10/28/caterpillar-q3-2022-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2023-01-26,https://www.fool.com/earnings/call-transcripts/2023/01/26/caterpillar-q4-2022-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2023-04-27,https://www.fool.com/earnings/call-transcripts/2023/04/27/caterpillar-q1-2023-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2023-08-03,https://www.fool.com/earnings/call-transcripts/2023/08/03/caterpillar-q2-2023-earnings-call-transcript/,Industrials
+CAT,Caterpillar Inc.,2023-11-02,https://www.fool.com/earnings/call-transcripts/2023/11/02/caterpillar-q3-2023-earnings-call-transcript/,Industrials
+TSLA,Tesla Inc.,2022-01-26,https://www.fool.com/earnings/call-transcripts/2022/01/26/tesla-q4-2021-earnings-call-transcript/,Consumer Discretionary
+TSLA,Tesla Inc.,2022-04-20,https://www.fool.com/earnings/call-transcripts/2022/04/20/tesla-q1-2022-earnings-call-transcript/,Consumer Discretionary
+TSLA,Tesla Inc.,2022-07-20,https://www.fool.com/earnings/call-transcripts/2022/07/20/tesla-q2-2022-earnings-call-transcript/,Consumer Discretionary
+TSLA,Tesla Inc.,2022-10-19,https://www.fool.com/earnings/call-transcripts/2022/10/19/tesla-q3-2022-earnings-call-transcript/,Consumer Discretionary
+TSLA,Tesla Inc.,2023-01-25,https://www.fool.com/earnings/call-transcripts/2023/01/25/tesla-q4-2022-earnings-call-transcript/,Consumer Discretionary
+TSLA,Tesla Inc.,2023-04-19,https://www.fool.com/earnings/call-transcripts/2023/04/19/tesla-q1-2023-earnings-call-transcript/,Consumer Discretionary
+TSLA,Tesla Inc.,2023-07-19,https://www.fool.com/earnings/call-transcripts/2023/07/19/tesla-q2-2023-earnings-call-transcript/,Consumer Discretionary
+TSLA,Tesla Inc.,2023-10-18,https://www.fool.com/earnings/call-transcripts/2023/10/18/tesla-q3-2023-earnings-call-transcript/,Consumer Discretionary
+V,Visa Inc.,2022-01-27,https://www.fool.com/earnings/call-transcripts/2022/01/27/visa-q1-2022-earnings-call-transcript/,Financials
+V,Visa Inc.,2022-04-26,https://www.fool.com/earnings/call-transcripts/2022/04/26/visa-q2-2022-earnings-call-transcript/,Financials
+V,Visa Inc.,2022-07-26,https://www.fool.com/earnings/call-transcripts/2022/07/26/visa-q3-2022-earnings-call-transcript/,Financials
+V,Visa Inc.,2022-10-25,https://www.fool.com/earnings/call-transcripts/2022/10/25/visa-q4-2022-earnings-call-transcript/,Financials
+V,Visa Inc.,2023-01-26,https://www.fool.com/earnings/call-transcripts/2023/01/26/visa-q1-2023-earnings-call-transcript/,Financials
+V,Visa Inc.,2023-04-25,https://www.fool.com/earnings/call-transcripts/2023/04/25/visa-q2-2023-earnings-call-transcript/,Financials
+V,Visa Inc.,2023-07-25,https://www.fool.com/earnings/call-transcripts/2023/07/25/visa-q3-2023-earnings-call-transcript/,Financials
+V,Visa Inc.,2023-10-24,https://www.fool.com/earnings/call-transcripts/2023/10/24/visa-q4-2023-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2022-01-27,https://www.fool.com/earnings/call-transcripts/2022/01/27/mastercard-q4-2021-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2022-04-28,https://www.fool.com/earnings/call-transcripts/2022/04/28/mastercard-q1-2022-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2022-07-28,https://www.fool.com/earnings/call-transcripts/2022/07/28/mastercard-q2-2022-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2022-10-27,https://www.fool.com/earnings/call-transcripts/2022/10/27/mastercard-q3-2022-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2023-01-26,https://www.fool.com/earnings/call-transcripts/2023/01/26/mastercard-q4-2022-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2023-05-01,https://www.fool.com/earnings/call-transcripts/2023/05/01/mastercard-q1-2023-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2023-07-27,https://www.fool.com/earnings/call-transcripts/2023/07/27/mastercard-q2-2023-earnings-call-transcript/,Financials
+MA,Mastercard Inc.,2023-10-26,https://www.fool.com/earnings/call-transcripts/2023/10/26/mastercard-q3-2023-earnings-call-transcript/,Financials
+INTC,Intel Corporation,2022-01-26,https://www.fool.com/earnings/call-transcripts/2022/01/26/intel-q4-2021-earnings-call-transcript/,Technology
+INTC,Intel Corporation,2022-04-28,https://www.fool.com/earnings/call-transcripts/2022/04/28/intel-q1-2022-earnings-call-transcript/,Technology
+INTC,Intel Corporation,2022-07-28,https://www.fool.com/earnings/call-transcripts/2022/07/28/intel-q2-2022-earnings-call-transcript/,Technology
+INTC,Intel Corporation,2022-10-27,https://www.fool.com/earnings/call-transcripts/2022/10/27/intel-q3-2022-earnings-call-transcript/,Technology
+INTC,Intel Corporation,2023-01-26,https://www.fool.com/earnings/call-transcripts/2023/01/26/intel-q4-2022-earnings-call-transcript/,Technology
+INTC,Intel Corporation,2023-04-27,https://www.fool.com/earnings/call-transcripts/2023/04/27/intel-q1-2023-earnings-call-transcript/,Technology
+INTC,Intel Corporation,2023-07-27,https://www.fool.com/earnings/call-transcripts/2023/07/27/intel-q2-2023-earnings-call-transcript/,Technology
+INTC,Intel Corporation,2023-10-26,https://www.fool.com/earnings/call-transcripts/2023/10/26/intel-q3-2023-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2022-02-01,https://www.fool.com/earnings/call-transcripts/2022/02/01/advanced-micro-devices-q4-2021-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2022-05-03,https://www.fool.com/earnings/call-transcripts/2022/05/03/advanced-micro-devices-q1-2022-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2022-08-02,https://www.fool.com/earnings/call-transcripts/2022/08/02/advanced-micro-devices-q2-2022-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2022-11-01,https://www.fool.com/earnings/call-transcripts/2022/11/01/advanced-micro-devices-q3-2022-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2023-01-31,https://www.fool.com/earnings/call-transcripts/2023/01/31/advanced-micro-devices-q4-2022-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2023-05-02,https://www.fool.com/earnings/call-transcripts/2023/05/02/advanced-micro-devices-q1-2023-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2023-08-01,https://www.fool.com/earnings/call-transcripts/2023/08/01/advanced-micro-devices-q2-2023-earnings-call-transcript/,Technology
+AMD,Advanced Micro Devices Inc.,2023-10-31,https://www.fool.com/earnings/call-transcripts/2023/10/31/advanced-micro-devices-q3-2023-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2022-03-01,https://www.fool.com/earnings/call-transcripts/2022/03/01/salesforce-q4-2022-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2022-05-31,https://www.fool.com/earnings/call-transcripts/2022/05/31/salesforce-q1-2023-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2022-08-24,https://www.fool.com/earnings/call-transcripts/2022/08/24/salesforce-q2-2023-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2022-11-30,https://www.fool.com/earnings/call-transcripts/2022/11/30/salesforce-q3-2023-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2023-03-01,https://www.fool.com/earnings/call-transcripts/2023/03/01/salesforce-q4-2023-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2023-05-31,https://www.fool.com/earnings/call-transcripts/2023/05/31/salesforce-q1-2024-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2023-08-30,https://www.fool.com/earnings/call-transcripts/2023/08/30/salesforce-q2-2024-earnings-call-transcript/,Technology
+CRM,Salesforce Inc.,2023-11-29,https://www.fool.com/earnings/call-transcripts/2023/11/29/salesforce-q3-2024-earnings-call-transcript/,Technology
+DIS,Walt Disney Company,2022-02-09,https://www.fool.com/earnings/call-transcripts/2022/02/09/walt-disney-q1-2022-earnings-call-transcript/,Communication Services
+DIS,Walt Disney Company,2022-05-11,https://www.fool.com/earnings/call-transcripts/2022/05/11/walt-disney-q2-2022-earnings-call-transcript/,Communication Services
+DIS,Walt Disney Company,2022-08-10,https://www.fool.com/earnings/call-transcripts/2022/08/10/walt-disney-q3-2022-earnings-call-transcript/,Communication Services
+DIS,Walt Disney Company,2022-11-08,https://www.fool.com/earnings/call-transcripts/2022/11/08/walt-disney-q4-2022-earnings-call-transcript/,Communication Services
+DIS,Walt Disney Company,2023-02-08,https://www.fool.com/earnings/call-transcripts/2023/02/08/walt-disney-q1-2023-earnings-call-transcript/,Communication Services
+DIS,Walt Disney Company,2023-05-10,https://www.fool.com/earnings/call-transcripts/2023/05/10/walt-disney-q2-2023-earnings-call-transcript/,Communication Services
+DIS,Walt Disney Company,2023-08-09,https://www.fool.com/earnings/call-transcripts/2023/08/09/walt-disney-q3-2023-earnings-call-transcript/,Communication Services
+DIS,Walt Disney Company,2023-11-08,https://www.fool.com/earnings/call-transcripts/2023/11/08/walt-disney-q4-2023-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2022-01-20,https://www.fool.com/earnings/call-transcripts/2022/01/20/netflix-q4-2021-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2022-04-19,https://www.fool.com/earnings/call-transcripts/2022/04/19/netflix-q1-2022-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2022-07-19,https://www.fool.com/earnings/call-transcripts/2022/07/19/netflix-q2-2022-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2022-10-18,https://www.fool.com/earnings/call-transcripts/2022/10/18/netflix-q3-2022-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2023-01-19,https://www.fool.com/earnings/call-transcripts/2023/01/19/netflix-q4-2022-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2023-04-18,https://www.fool.com/earnings/call-transcripts/2023/04/18/netflix-q1-2023-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2023-07-19,https://www.fool.com/earnings/call-transcripts/2023/07/19/netflix-q2-2023-earnings-call-transcript/,Communication Services
+NFLX,Netflix Inc.,2023-10-18,https://www.fool.com/earnings/call-transcripts/2023/10/18/netflix-q3-2023-earnings-call-transcript/,Communication Services
