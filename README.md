@@ -21,7 +21,7 @@ uv sync --extra dev
 
 # 2. Download the LM Master Dictionary (one-time manual step)
 #    → https://sraf.nd.edu/loughranmcdonald-master-dictionary/
-#    → save to: data/raw/lm_dictionary/Loughran-McDonald_MasterDictionary_1993-2023.csv
+#    → save to: data/raw/lm_dictionary/Loughran-McDonald_MasterDictionary_1993-2025.csv
 
 # 3. Scrape ~192 earnings call transcripts (~20 min, polite rate limiting)
 python main.py --mode scrape

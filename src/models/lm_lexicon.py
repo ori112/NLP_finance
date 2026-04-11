@@ -19,7 +19,7 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 LM_CSV_PATH = Path(
-    "data/raw/lm_dictionary/Loughran-McDonald_MasterDictionary_1993-2023.csv"
+    "data/raw/lm_dictionary/Loughran-McDonald_MasterDictionary_1993-2025.csv"
 )
 
 _CATEGORIES = ["Positive", "Negative", "Uncertainty", "Litigious", "Constraining"]

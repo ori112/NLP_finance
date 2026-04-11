@@ -48,6 +48,6 @@ python main.py --mode analyze --model lm
 
 **Source:** University of Notre Dame — Tim Loughran & Bill McDonald  
 **Download URL:** `https://sraf.nd.edu/loughranmcdonald-master-dictionary/`  
-**File:** `Loughran-McDonald_MasterDictionary_1993-2023.csv`  
+**File:** `Loughran-McDonald_MasterDictionary_1993-2025.csv`  
 **Save to:** `data/raw/lm_dictionary/` (not committed to git — manual download required)  
 **License:** Available for academic research use
