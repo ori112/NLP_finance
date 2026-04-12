@@ -399,7 +399,7 @@ _QA_PATTERN = re.compile(
 )
 
 _OPERATOR_TURN = re.compile(
-    r"(?:^|\n)\s*Operator\s*:",
+    r"(?:^|\n)Operator\s*(?:\n|:)",
     re.IGNORECASE,
 )
 ```
@@ -419,8 +419,24 @@ makes the final `s` optional).
 **`|`** — alternation. Matches any one of the listed alternatives left-to-right.
 
 **`(?:^|\n)`** in `_OPERATOR_TURN` — matches either the very start of the string
-or a newline. This ensures "Operator:" is at the beginning of a line, not
+or a newline. This ensures "Operator" is at the beginning of a line, not
 inside running text like "The operator confirmed that...".
+
+**`(?:\n|:)`** — matches either a newline or a colon after "Operator". Motley
+Fool uses two formats across different transcript eras: old transcripts write
+`Operator: Good day...` (colon), while newer transcripts write the speaker name
+on its own line (`Operator\nGood day...`). The alternation handles both.
+
+**Why Tier 2 skips the first Operator turn:** In the new Motley Fool format,
+"Operator" appears at position ~0 to open the call. Tier 2 only considers
+Operator turns that appear after the first 1/3 of the text — this skips the
+opening turn and finds the Operator returning to begin analyst Q&A.
+
+**NFLX and TSLA exception:** These companies use a non-standard interview/webcast
+format with no Operator at all (NFLX uses an external interviewer; TSLA calls
+itself a "Q&A webcast"). All 13 transcripts from these two tickers fall to the
+Tier 3 heuristic split and are excluded from evaluation metrics, but they
+serve as failure-case examples in the error analysis.
 
 ### The split logic
 
@@ -600,9 +616,21 @@ def _get_price_return(ticker: str, start: str, end: str) -> float | None:
 `BDay(1)` gives the following Monday (not Saturday). This avoids computing a
 "return" across a weekend when markets are closed.
 
+**Critical detail — yfinance end date is exclusive.** A common pitfall:
+
 ```python
+# WRONG — returns only 1 row (earnings date itself), len(data) < 2 → None
 date_plus_1 = (date + pd.offsets.BDay(1)).strftime("%Y-%m-%d")
+yf.download(ticker, start=date_str, end=date_plus_1)  # [earnings_date, next_bday)
+
+# CORRECT — returns 2 rows: earnings date close AND next trading day close
+date_plus_1_excl = (date + pd.offsets.BDay(2)).strftime("%Y-%m-%d")
+yf.download(ticker, start=date_str, end=date_plus_1_excl)  # [earnings_date, bday+1)
 ```
+
+The 1-day return is then `(prices.iloc[-1] - prices.iloc[0]) / prices.iloc[0]`,
+i.e. the percentage change from the earnings-day close to the next trading day's
+close — exactly what we want.
 
 ### Why might `data.empty` happen?
 
@@ -1119,6 +1147,22 @@ main.py
 
 ## 19. Key Design Decisions Q&A
 
+**Q: What were the actual pipeline results?**
+A: On 107 evaluable transcripts (124 scraped, 111 reliable splits, 4 dropped for
+short segments):
+
+| Condition | Accuracy | Macro F1 | Pearson r (1d) |
+|---|---|---|---|
+| PR_LM | 0.3925 | 0.1986 | 0.050 |
+| QA_LM | 0.2150 | 0.1679 | -0.005 |
+| **PR_FINBERT** | **0.4673** | **0.2538** | **0.058** |
+| QA_FINBERT | 0.0748 | 0.0464 | -0.112 |
+
+Key findings: Prepared Remarks + FinBERT is the best combination. QA_FINBERT
+collapses to near-zero (predicts nearly all samples as the same class). All
+Pearson correlations are statistically insignificant (p > 0.05). 78 failure
+cases were exported (65 mismatches + 13 heuristic splits).
+
 **Q: Why not use a Kaggle dataset instead of scraping?**
 A: No suitable pre-existing dataset covers the 2022–2023 date range with both
 earnings call text and contemporaneous stock returns. More importantly, building
@@ -1127,7 +1171,7 @@ engineering competence.
 
 **Q: Why is the URL manifest committed to git but transcripts are not?**
 A: Transcripts are large (each JSON ~100KB, total ~20MB) and copyrighted. The
-manifest is 192 lines of metadata — small, not copyrighted, and necessary for
+manifest is 124 lines of metadata — small, not copyrighted, and necessary for
 reproducibility. Anyone running `python main.py --mode scrape` with the committed
 manifest produces the exact same dataset.
 
@@ -1155,8 +1199,8 @@ relationship between sentiment magnitude and return magnitude.
 **Q: Could you fine-tune FinBERT on this dataset?**
 A: Yes — this is mentioned as a "possible innovation" in the plan. You would
 use the `label_1d` column as a weak supervision signal and fine-tune the
-classification head. The risk is that with 192 samples (after train/val split,
-~130 training examples), overfitting is likely. For the current project scope,
+classification head. The risk is that with 107 evaluable samples (after train/val
+split, ~75 training examples), overfitting is near-certain. For the current project scope,
 zero-shot FinBERT is the appropriate choice.
 
 **Q: What is the ethical justification for scraping Motley Fool?**
