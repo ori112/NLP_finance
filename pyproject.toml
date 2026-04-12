@@ -30,6 +30,7 @@ dependencies = [
     # Utilities
     "tqdm>=4.66",
     "python-dotenv>=1.0",
+    "pyarrow>=23.0.1",
 ]
 
 [project.optional-dependencies]

@@ -26,9 +26,11 @@ _QA_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
-# Tier 2 fallback — "Operator:" speaker turns signal the Q&A boundary
+# Tier 2 fallback — Operator speaker turns signal the Q&A boundary.
+# Motley Fool uses two formats: old = "Operator:" (with colon),
+# new = "Operator\n" (speaker name on its own line, no colon).
 _OPERATOR_TURN = re.compile(
-    r"(?:^|\n)\s*Operator\s*:",
+    r"(?:^|\n)Operator\s*(?:\n|:)",
     re.IGNORECASE,
 )
 
@@ -81,10 +83,15 @@ def split_transcript(
         TranscriptSegments dataclass.
     """
     # --- Tier 1: primary regex -------------------------------------------------
+    n = len(raw_text)
     pr_match = _PREPARED_PATTERN.search(raw_text)
     qa_match = _QA_PATTERN.search(raw_text)
 
-    if pr_match and qa_match and pr_match.start() < qa_match.start():
+    # Require QA marker before 85% to avoid matching closing lines like
+    # "This concludes our question-and-answer session" at the very end.
+    if (pr_match and qa_match
+            and pr_match.start() < qa_match.start()
+            and qa_match.start() < n * 0.85):
         prepared = raw_text[pr_match.end(): qa_match.start()].strip()
         qa = raw_text[qa_match.end():].strip()
         return TranscriptSegments(

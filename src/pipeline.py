@@ -35,11 +35,9 @@ _FAILURES_PATH = Path("data/outputs/failure_cases.csv")
 
 def _load_segments() -> pd.DataFrame:
     if not _SEGMENTS_PATH.exists():
-        raise FileNotFoundError(
-            f"Segments file not found at {_SEGMENTS_PATH}. "
-            "Run preprocessing first: python main.py --mode analyze will attempt it, "
-            "or run src/processing/pipeline.py directly."
-        )
+        logger.info("segments.parquet not found — running preprocessing now …")
+        from src.processing.pipeline import run_preprocessing
+        return run_preprocessing(output_path=_SEGMENTS_PATH)
     return pd.read_parquet(_SEGMENTS_PATH)
 
 

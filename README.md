@@ -71,6 +71,14 @@ data/
 └── outputs/                        # results_summary.csv, failure_cases.csv, figures/ (gitignored)
 ```
 
+## Dataset
+
+**124 transcripts** across **21 tickers** and **8 sectors** (Jan 2022 – Dec 2023):  
+AAPL, AMZN, BA, CRM, CVX, DIS, GOOGL, INTC, KO, MA, MSFT, NFLX, NVDA, ORCL, PFE, SNAP, TSLA, V, WFC, WMT, XOM
+
+Preprocessing produces **111 reliable PR/QA splits** (7 regex-primary + 104 Operator-turn fallback).  
+13 transcripts (NFLX, TSLA — interview/webcast format) fall back to heuristic split and are excluded from metrics but serve as failure-case examples.
+
 ## Data Sources
 
 | Source | Purpose | License |

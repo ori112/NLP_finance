@@ -12,11 +12,11 @@
 
 | Attribute | Value |
 |---|---|
-| Total transcripts collected | [TODO: fill in after scraping] |
-| Successful regex splits | [TODO: fill in after preprocessing] |
-| Heuristic fallback splits | [TODO: fill in after preprocessing] |
-| Date range | Jan 2022 – Nov 2023 |
-| Tickers covered | AAPL, MSFT, GOOGL, META, AMZN, NVDA, JPM, GS, JNJ, UNH, XOM, CVX, WMT, PG, BA, CAT, TSLA, V, MA, INTC, AMD, CRM, DIS, NFLX |
+| Total transcripts collected | 124 |
+| Successful regex splits (PR/QA labelled) | 111 (7 primary + 104 Operator-turn fallback) |
+| Heuristic fallback splits (excluded from metrics) | 13 (NFLX × 7, TSLA × 6 — interview/webcast format, no Operator) |
+| Date range | Jan 2022 – Dec 2023 |
+| Tickers covered | AAPL, AMZN, BA, CRM, CVX, DIS, GOOGL, INTC, KO, MA, MSFT, NFLX, NVDA, ORCL, PFE, SNAP, TSLA, V, WFC, WMT, XOM |
 | Sectors covered | Technology, Financials, Healthcare, Energy, Consumer Discretionary, Consumer Staples, Industrials, Communication Services |
 
 **Why this date range (2022–2023):**  
