@@ -35,3 +35,6 @@ data/outputs/*
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# LM Dictionary — manual download required (see DATA.md)
+data/raw/lm_dictionary/*.csv
