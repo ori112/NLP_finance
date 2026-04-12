@@ -112,13 +112,14 @@ def run_scraper(tickers: list[str] | None = None) -> None:
         tickers_upper = {t.upper() for t in tickers}
         entries = [e for e in entries if e["ticker"].upper() in tickers_upper]
 
-    logger.info("Manifest loaded: %d entries to process.", len(entries))
+    total = len(entries)
+    logger.info("Manifest loaded: %d entries to process.", total)
     session = _make_session()
     skipped = 0
     saved = 0
     failed = 0
 
-    for entry in tqdm(entries, desc="Scraping transcripts"):
+    for i, entry in enumerate(tqdm(entries, desc="Scraping transcripts")):
         ticker = entry["ticker"].strip().upper()
         date = entry["date"].strip()
         url = entry["url"].strip()
@@ -126,22 +127,25 @@ def run_scraper(tickers: list[str] | None = None) -> None:
 
         if _already_scraped(ticker, date):
             skipped += 1
+            logger.info("[%d/%d] SKIP  %s %s (already on disk)", i + 1, total, ticker, date)
             continue
 
         try:
+            logger.info("[%d/%d] FETCH %s %s …", i + 1, total, ticker, date)
             html = fetch_page(url, session)
             record = parse_transcript(html, url, ticker, date, company)
 
             if len(record["raw_text"]) < 200:
-                logger.warning("Very short transcript for %s %s — skipping.", ticker, date)
+                logger.warning("[%d/%d] SHORT %s %s — skipping (text < 200 chars).", i + 1, total, ticker, date)
                 failed += 1
                 continue
 
             save_transcript(record)
             saved += 1
+            logger.info("[%d/%d] SAVED %s %s (%d chars)", i + 1, total, ticker, date, len(record["raw_text"]))
 
         except Exception as exc:
-            logger.error("Failed to scrape %s %s (%s): %s", ticker, date, url, exc)
+            logger.error("[%d/%d] FAIL  %s %s — %s", i + 1, total, ticker, date, exc)
             failed += 1
 
     logger.info(

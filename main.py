@@ -1,4 +1,17 @@
 import argparse
+import logging
+import sys
+
+
+def _setup_logging() -> None:
+    """Configure root logger to print timestamped messages to stdout."""
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s  %(levelname)-8s  %(message)s",
+        datefmt="%H:%M:%S",
+        stream=sys.stdout,
+        force=True,
+    )
 
 
 def parse_args() -> argparse.Namespace:
@@ -27,6 +40,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    _setup_logging()
     args = parse_args()
 
     if args.mode == "scrape":
