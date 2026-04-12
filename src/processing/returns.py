@@ -58,13 +58,15 @@ def fetch_returns(
         Values are None if data could not be fetched.
     """
     date = pd.Timestamp(earnings_date)
-    date_plus_1 = (date + pd.offsets.BDay(1)).strftime("%Y-%m-%d")
+    # yfinance end date is exclusive, so we need BDay(2) as end to include
+    # both the earnings-date close AND the next trading day's close in the window.
+    date_plus_1_excl = (date + pd.offsets.BDay(2)).strftime("%Y-%m-%d")
     date_plus_3 = (date + pd.Timedelta(days=window_days)).strftime("%Y-%m-%d")
     date_str = date.strftime("%Y-%m-%d")
 
-    r1 = _get_price_return(ticker, date_str, date_plus_1)
+    r1 = _get_price_return(ticker, date_str, date_plus_1_excl)
     r3 = _get_price_return(ticker, date_str, date_plus_3)
-    spy1 = _get_price_return(_SPY, date_str, date_plus_1)
+    spy1 = _get_price_return(_SPY, date_str, date_plus_1_excl)
     spy3 = _get_price_return(_SPY, date_str, date_plus_3)
 
     def _adj(stock: float | None, market: float | None) -> float | None:

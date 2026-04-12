@@ -91,12 +91,14 @@ Preprocessing produces **111 reliable PR/QA splits** (7 regex-primary + 104 Oper
 
 *(Populated after running `python main.py --mode analyze` on live data)*
 
-| Condition | Accuracy | Macro F1 | Pearson r (1d) |
-|---|---|---|---|
-| PR_LM | — | — | — |
-| QA_LM | — | — | — |
-| PR_FINBERT | — | — | — |
-| QA_FINBERT | — | — | — |
+| Condition | Accuracy | Macro F1 | Pearson r (1d) | Pearson r (3d) |
+|---|---|---|---|---|
+| PR_LM | 0.3925 | 0.1986 | 0.050 | 0.077 |
+| QA_LM | 0.2150 | 0.1679 | -0.005 | 0.013 |
+| **PR_FINBERT** | **0.4673** | **0.2538** | **0.058** | **0.075** |
+| QA_FINBERT | 0.0748 | 0.0464 | -0.112 | -0.127 |
+
+*n = 107 evaluable transcripts (111 reliable splits minus 4 dropped due to short segments). Pearson p-values all > 0.05 — correlations not statistically significant at this sample size.*
 
 ## CLI Reference
 
