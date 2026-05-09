@@ -706,20 +706,18 @@ remarks section and a 1,000-word Q&A section produce comparable scores. Raw
 counts would systematically favor longer texts.
 
 **net_sentiment** is the continuous feature used for Pearson correlation.
-`classify_sentiment()` applies a threshold to convert it to a 3-class label:
+`classify_sentiment()` maps it to a binary direction prediction:
 
 ```python
-def classify_sentiment(scores: dict[str, float], threshold: float = 0.01) -> str:
-    net = scores["net_sentiment"]
-    if net > threshold:   return "positive"
-    if net < -threshold:  return "negative"
-    return "neutral"
+def classify_sentiment(scores: dict[str, float], threshold: float = 0.0) -> str:
+    return "up" if scores["net_sentiment"] > threshold else "down"
 ```
 
-**Why threshold = 0.01?** A net sentiment of 0.01 means the text has 1% more
-positive financial words than negative ones. This is a weak signal — many
-neutral-sounding earnings calls hit this level. The threshold is swept in
-evaluation (Phase 5) to find the F1-optimal cutoff.
+**Why threshold = 0?** The proposal frames the task as binary stock-direction
+classification (up/down), so the natural sign split is at 0: if the text has
+more positive than negative LM words, predict "up", otherwise "down". A
+non-zero threshold would re-introduce a neutral class that the proposal
+disallows.
 
 ---
 
@@ -910,11 +908,16 @@ def compute_classification_metrics(y_true, y_pred, labels=_LABELS):
         "accuracy": round(accuracy, 4),
         "macro_f1": round(macro_f1, 4),
         "weighted_f1": round(weighted_f1, 4),
-        "positive_f1": round(per_class[0], 4),
-        "neutral_f1": round(per_class[1], 4),
-        "negative_f1": round(per_class[2], 4),
+        "up_f1": round(per_class[0], 4),
+        "down_f1": round(per_class[1], 4),
     }
 ```
+
+`_LABELS` is `["up", "down"]` — the binary stock-direction target from the
+proposal. With two classes, `macro_f1` is the unweighted mean of `up_f1` and
+`down_f1`; a model that predicts "up" for every sample (which several of ours
+nearly do) still scores high `up_f1` but tanks `down_f1`, and `macro_f1`
+exposes that asymmetry where raw accuracy hides it.
 
 **`zero_division=0`**: If a class never appears in predictions, F1 is undefined
 (division by zero). This flag returns 0 instead of raising a warning.
@@ -1057,9 +1060,9 @@ Shows macro F1 and weighted F1 side by side.
 is the best-performing combination. The difference between macro and weighted F1
 bars reveals class imbalance effects.
 
-### Plot 3 — Sentiment Distribution
+### Plot 3 — Direction Distribution
 
-Stacked bar chart showing how many transcripts were labeled positive/neutral/negative
+Stacked bar chart showing how many transcripts were predicted "up" vs "down"
 by each model × segment combination.
 
 **Why this matters:** Class imbalance is visible here. If 70% of predictions
@@ -1148,20 +1151,23 @@ main.py
 ## 19. Key Design Decisions Q&A
 
 **Q: What were the actual pipeline results?**
-A: On 107 evaluable transcripts (124 scraped, 111 reliable splits, 4 dropped for
-short segments):
+A: Binary up/down classification on 107 evaluable transcripts (124 scraped,
+111 reliable splits, 4 dropped for short segments):
 
-| Condition | Accuracy | Macro F1 | Pearson r (1d) |
-|---|---|---|---|
-| PR_LM | 0.3925 | 0.1986 | 0.050 |
-| QA_LM | 0.2150 | 0.1679 | -0.005 |
-| **PR_FINBERT** | **0.4673** | **0.2538** | **0.058** |
-| QA_FINBERT | 0.0748 | 0.0464 | -0.112 |
+| Condition | Accuracy | Macro F1 | up_F1 | down_F1 | Pearson r (1d) |
+|---|---|---|---|---|---|
+| PR_LM | 0.4673 | 0.3331 | 0.6323 | 0.0339 | 0.050 |
+| QA_LM | 0.5047 | 0.4332 | 0.6345 | 0.2319 | -0.005 |
+| **PR_FINBERT** | **0.5327** | **0.3953** | **0.6835** | 0.1071 | 0.058 |
+| QA_FINBERT | 0.5140 | 0.3560 | 0.6750 | 0.0370 | -0.112 |
 
-Key findings: Prepared Remarks + FinBERT is the best combination. QA_FINBERT
-collapses to near-zero (predicts nearly all samples as the same class). All
-Pearson correlations are statistically insignificant (p > 0.05). 78 failure
-cases were exported (65 mismatches + 13 heuristic splits).
+Key findings: PR_FINBERT is the best combination at 53.3% accuracy. All four
+models favour "up" predictions — `down_F1` is much lower than `up_F1` across
+the board, reflecting (a) class imbalance in the bullish 2022–2023 sample and
+(b) FinBERT's tendency to assign high "neutral" probability that, when stripped
+out for the binary mapping, defaults toward whichever non-neutral class has
+even slight majority. All Pearson correlations are statistically insignificant
+(p > 0.05). 70 failure cases were exported (57 mismatches + 13 heuristic splits).
 
 **Q: Why not use a Kaggle dataset instead of scraping?**
 A: No suitable pre-existing dataset covers the 2022–2023 date range with both
@@ -1191,7 +1197,7 @@ add noise to the correlation between sentiment and returns. They are still logge
 as failure cases to satisfy the error analysis requirement.
 
 **Q: Why does the Pearson correlation use continuous scores instead of class labels?**
-A: Class labels (positive/neutral/negative) lose information — the difference
+A: Class labels (up/down) lose information — the difference
 between net_sentiment=0.001 and net_sentiment=0.04 is discarded when both become
 "positive". Pearson correlation on continuous scores measures the full linear
 relationship between sentiment magnitude and return magnitude.
@@ -1210,13 +1216,13 @@ are stored locally and not redistributed. (4) Usage is for non-commercial
 academic research only. This falls within academic fair use of publicly accessible
 content.
 
-**Q: Why ±0.5% threshold for the return label?**
-A: This threshold excludes the bid-ask spread noise (typically 0.01-0.1% for
-large caps) and very small post-earnings drifts that are statistically
-indistinguishable from random. A tighter threshold (e.g., ±0.1%) creates a very
-large "positive" class on bull market days; a wider threshold (e.g., ±2%)
-creates a very large "neutral" class and discards most signal. ±0.5% is the
-standard in the academic earnings surprise literature.
+**Q: Why threshold = 0 for the return label?**
+A: The project proposal explicitly frames the task as binary stock-direction
+classification — *"סיווג כיוון תנועת המניה (עלייה/ירידה)"* (up/down). A non-zero
+threshold would re-introduce a neutral class, which the proposal disallows. With
+threshold = 0, every trading day is either up or down based on the sign of the
+market-adjusted return. We accept the limitation that days with very small
+moves contribute slightly noisier labels — this is documented in the report.
 
 ---
 

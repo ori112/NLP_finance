@@ -75,10 +75,14 @@ def aggregate_chunk_scores(
           'majority' : Pick the label that appears most often across chunks.
 
     Returns:
-        Dict with keys 'positive', 'negative', 'neutral' (probabilities) and 'label'.
+        Dict with keys 'positive', 'negative', 'neutral' (probabilities) and
+        'label'. The discrete label is binary ("up" vs. "down") per the project's
+        binary stock-direction framing: "up" if positive_prob > negative_prob
+        else "down". The neutral probability is preserved for analysis but is
+        not used to pick the discrete label.
     """
     if not chunk_scores:
-        return {"positive": 0.0, "negative": 0.0, "neutral": 1.0, "label": "neutral"}
+        return {"positive": 0.0, "negative": 0.0, "neutral": 1.0, "label": "down"}
 
     labels = ["positive", "negative", "neutral"]
 
@@ -87,21 +91,19 @@ def aggregate_chunk_scores(
             lbl: sum(c.get(lbl, 0.0) for c in chunk_scores) / len(chunk_scores)
             for lbl in labels
         }
-        avg["label"] = max(labels, key=lambda l: avg[l])
+        avg["label"] = "up" if avg["positive"] > avg["negative"] else "down"
         return avg
 
     if strategy == "majority":
-        label_counts: dict[str, int] = {lbl: 0 for lbl in labels}
+        up_votes = 0
         for c in chunk_scores:
-            winner = max(labels, key=lambda l: c.get(l, 0.0))
-            label_counts[winner] += 1
-        majority_label = max(label_counts, key=lambda l: label_counts[l])
-        # Return mean probabilities but majority label
+            if c.get("positive", 0.0) > c.get("negative", 0.0):
+                up_votes += 1
         avg = {
             lbl: sum(c.get(lbl, 0.0) for c in chunk_scores) / len(chunk_scores)
             for lbl in labels
         }
-        avg["label"] = majority_label
+        avg["label"] = "up" if up_votes > len(chunk_scores) / 2 else "down"
         return avg
 
     raise ValueError(f"Unknown aggregation strategy: {strategy!r}. Use 'mean', 'weighted', or 'majority'.")

@@ -74,30 +74,31 @@ def test_aggregate_mean_averages_correctly() -> None:
     ]
     result = aggregate_chunk_scores(scores, strategy="mean")
     assert abs(result["positive"] - 0.7) < 1e-6
-    assert result["label"] == "positive"
+    # Binary task: positive_prob > negative_prob → "up"
+    assert result["label"] == "up"
 
 
-def test_aggregate_mean_single_chunk() -> None:
+def test_aggregate_mean_single_chunk_down() -> None:
     scores = [{"positive": 0.1, "negative": 0.8, "neutral": 0.1}]
     result = aggregate_chunk_scores(scores, strategy="mean")
-    assert result["label"] == "negative"
+    assert result["label"] == "down"
 
 
-def test_aggregate_majority_picks_most_common_label() -> None:
+def test_aggregate_majority_uses_per_chunk_direction() -> None:
+    # Two chunks vote up (positive>negative), one votes down — majority "up".
     scores = [
         {"positive": 0.8, "negative": 0.1, "neutral": 0.1},
-        {"positive": 0.1, "negative": 0.8, "neutral": 0.1},
-        {"positive": 0.1, "negative": 0.1, "neutral": 0.8},
+        {"positive": 0.6, "negative": 0.2, "neutral": 0.2},
+        {"positive": 0.1, "negative": 0.7, "neutral": 0.2},
     ]
     result = aggregate_chunk_scores(scores, strategy="majority")
-    # Each label wins once — first alphabetically or any is valid;
-    # main assertion: result has a label key
-    assert result["label"] in {"positive", "negative", "neutral"}
+    assert result["label"] == "up"
 
 
-def test_aggregate_empty_input_returns_neutral() -> None:
+def test_aggregate_empty_input_returns_down() -> None:
+    # Empty input is a degenerate case — convention: default to "down".
     result = aggregate_chunk_scores([])
-    assert result["label"] == "neutral"
+    assert result["label"] == "down"
 
 
 def test_aggregate_invalid_strategy_raises() -> None:
@@ -115,7 +116,7 @@ def test_predict_sentiment_returns_valid_label() -> None:
 
     pipe = load_finbert_pipeline(device=-1)
     result = predict_sentiment("Revenue grew strongly this quarter.", pipe)
-    assert result["label"] in {"positive", "negative", "neutral"}
+    assert result["label"] in {"up", "down"}
     total = result["positive"] + result["negative"] + result["neutral"]
     assert abs(total - 1.0) < 0.05  # probabilities sum to ~1
 

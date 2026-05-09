@@ -12,7 +12,7 @@ from src.evaluation.metrics import compute_classification_metrics, compute_pears
 # ---------------------------------------------------------------------------
 
 def test_perfect_prediction_gives_1_0() -> None:
-    y = ["positive", "negative", "neutral", "positive", "negative"]
+    y = ["up", "down", "up", "down", "up"]
     metrics = compute_classification_metrics(y, y)
     assert metrics["accuracy"] == 1.0
     assert metrics["macro_f1"] == 1.0
@@ -20,24 +20,21 @@ def test_perfect_prediction_gives_1_0() -> None:
 
 
 def test_all_wrong_gives_0_accuracy() -> None:
-    y_true = ["positive", "positive", "positive"]
-    y_pred = ["negative", "negative", "negative"]
+    y_true = ["up", "up", "up"]
+    y_pred = ["down", "down", "down"]
     metrics = compute_classification_metrics(y_true, y_pred)
     assert metrics["accuracy"] == 0.0
 
 
 def test_returns_all_expected_keys() -> None:
-    metrics = compute_classification_metrics(["positive"], ["positive"])
-    expected = {
-        "accuracy", "macro_f1", "weighted_f1",
-        "positive_f1", "neutral_f1", "negative_f1",
-    }
+    metrics = compute_classification_metrics(["up"], ["up"])
+    expected = {"accuracy", "macro_f1", "weighted_f1", "up_f1", "down_f1"}
     assert expected.issubset(set(metrics.keys()))
 
 
 def test_mixed_prediction_accuracy() -> None:
-    y_true = ["positive", "positive", "negative", "negative"]
-    y_pred = ["positive", "negative", "negative", "negative"]
+    y_true = ["up", "up", "down", "down"]
+    y_pred = ["up", "down", "down", "down"]
     metrics = compute_classification_metrics(y_true, y_pred)
     assert metrics["accuracy"] == 0.75
 
@@ -74,8 +71,8 @@ def _make_df(n_mismatches: int = 12, n_heuristic: int = 3) -> pd.DataFrame:
     for i in range(n_mismatches):
         rows.append({
             "ticker": f"T{i}", "date": "2023-01-01", "company": "Test Co",
-            "model_label": "positive",
-            "label_1d": "negative",
+            "model_label": "up",
+            "label_1d": "down",
             "market_adj_1d": -0.03,
             "split_successful": True,
             "split_method": "regex_primary",
@@ -119,8 +116,9 @@ def test_extract_raises_if_insufficient() -> None:
 def test_extract_failure_reason_labels() -> None:
     df = _make_df(n_mismatches=12, n_heuristic=0)
     result = extract_failure_cases(df, model_label_col="model_label")
-    valid_reasons = {"false_positive", "false_negative", "neutral_missed", "split_heuristic"}
-    assert set(result["failure_reason"].unique()).issubset(valid_reasons)
+    # _reason() returns f"predicted_{pred}_was_{truth}" — for our fixture this
+    # is always predicted_up_was_down because model_label=up, label_1d=down.
+    assert (result["failure_reason"] == "predicted_up_was_down").all()
 
 
 def test_export_raises_if_too_few(tmp_path) -> None:

@@ -2,12 +2,17 @@
 
 Model: ProsusAI/finbert (HuggingFace Hub)
   - Pre-trained on financial text (10-K filings, financial news)
-  - Three output classes: positive, negative, neutral
+  - Native FinBERT outputs three probabilities: positive, negative, neutral
+  - We map this to a binary up/down direction prediction by comparing
+    positive_prob vs. negative_prob (neutral is preserved for analysis but
+    not used to pick the discrete label)
   - 512-token BERT limit handled via sliding_window_chunks()
 
 Caching: After the first run, scores are saved to data/outputs/finbert_scores.parquet.
 On subsequent calls, the cache is loaded directly — re-inference for 200 transcripts
-takes 1-2 hours on CPU, so caching is essential.
+takes 1-2 hours on CPU, so caching is essential. The cached probability columns
+are kept verbatim; the discrete label column is recomputed on load so any change
+to the label policy (e.g. 3-class → binary) takes effect without re-inference.
 """
 
 import logging
@@ -24,7 +29,6 @@ logger = logging.getLogger(__name__)
 
 MODEL_ID = "ProsusAI/finbert"
 _SCORE_CACHE = Path("data/outputs/finbert_scores.parquet")
-_LABEL_MAP = {"positive": "positive", "negative": "negative", "neutral": "neutral"}
 
 
 def load_finbert_pipeline(device: int = -1):
@@ -86,10 +90,7 @@ def predict_sentiment(
             scores_list = raw[0]
         else:
             scores_list = raw
-        chunk_score = {
-            _LABEL_MAP.get(item["label"].lower(), item["label"].lower()): item["score"]
-            for item in scores_list
-        }
+        chunk_score = {item["label"].lower(): item["score"] for item in scores_list}
         chunk_scores.append(chunk_score)
 
     result = aggregate_chunk_scores(chunk_scores, strategy=aggregation)
@@ -129,16 +130,25 @@ def score_dataframe(
         DataFrame with FinBERT score columns appended.
     """
     cache_col = f"{prefix}_label"
+    pos_col = f"{prefix}_positive"
+    neg_col = f"{prefix}_negative"
 
     # Load from cache if available and complete
     if cache_path.exists():
         cached = pd.read_parquet(cache_path)
         if cache_col in cached.columns and len(cached) == len(df):
             logger.info("Loading FinBERT scores from cache: %s", cache_path)
-            # Merge cached scores back onto df by position
             score_cols = [c for c in cached.columns if c.startswith(prefix)]
+            cached_scores = cached[score_cols].reset_index(drop=True).copy()
+            # Re-derive the discrete label from cached probabilities so any
+            # change to the label policy (e.g. 3-class → binary) is picked up
+            # without re-running inference.
+            if pos_col in cached_scores.columns and neg_col in cached_scores.columns:
+                cached_scores[cache_col] = (
+                    cached_scores[pos_col] > cached_scores[neg_col]
+                ).map({True: "up", False: "down"})
             return pd.concat(
-                [df.reset_index(drop=True), cached[score_cols].reset_index(drop=True)],
+                [df.reset_index(drop=True), cached_scores],
                 axis=1,
             )
 

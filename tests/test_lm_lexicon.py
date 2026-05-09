@@ -94,25 +94,22 @@ def test_compute_score_counts_duplicates(*_) -> None:
 # classify_sentiment
 # ---------------------------------------------------------------------------
 
-def test_classify_positive() -> None:
-    assert classify_sentiment({"net_sentiment": 0.05}) == "positive"
+def test_classify_up() -> None:
+    assert classify_sentiment({"net_sentiment": 0.05}) == "up"
 
 
-def test_classify_negative() -> None:
-    assert classify_sentiment({"net_sentiment": -0.05}) == "negative"
+def test_classify_down() -> None:
+    assert classify_sentiment({"net_sentiment": -0.05}) == "down"
 
 
-def test_classify_neutral_above_zero() -> None:
-    assert classify_sentiment({"net_sentiment": 0.005}, threshold=0.01) == "neutral"
-
-
-def test_classify_neutral_at_zero() -> None:
-    assert classify_sentiment({"net_sentiment": 0.0}) == "neutral"
+def test_classify_zero_is_down() -> None:
+    # Default threshold is 0; net_sentiment must exceed 0 to be "up".
+    assert classify_sentiment({"net_sentiment": 0.0}) == "down"
 
 
 def test_classify_custom_threshold() -> None:
-    assert classify_sentiment({"net_sentiment": 0.03}, threshold=0.05) == "neutral"
-    assert classify_sentiment({"net_sentiment": 0.06}, threshold=0.05) == "positive"
+    assert classify_sentiment({"net_sentiment": 0.03}, threshold=0.05) == "down"
+    assert classify_sentiment({"net_sentiment": 0.06}, threshold=0.05) == "up"
 
 
 # ---------------------------------------------------------------------------

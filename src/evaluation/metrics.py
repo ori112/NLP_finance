@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score, classification_report, f1_score
 
 logger = logging.getLogger(__name__)
 
-_LABELS = ["positive", "neutral", "negative"]
+_LABELS = ["up", "down"]
 
 
 def compute_classification_metrics(
@@ -18,14 +18,15 @@ def compute_classification_metrics(
 ) -> dict[str, float]:
     """Compute accuracy and F1 scores for a set of predictions.
 
+    Binary stock-direction task: labels are "up" and "down".
+
     Args:
         y_true: Ground-truth labels (e.g. from market-adjusted returns).
         y_pred: Model-predicted labels.
         labels: Ordered class labels for per-class F1 reporting.
 
     Returns:
-        Dict with keys: accuracy, macro_f1, weighted_f1,
-        plus per-class keys positive_f1, neutral_f1, negative_f1.
+        Dict with keys: accuracy, macro_f1, weighted_f1, up_f1, down_f1.
     """
     accuracy = accuracy_score(y_true, y_pred)
     macro_f1 = f1_score(y_true, y_pred, labels=labels, average="macro", zero_division=0)
@@ -36,9 +37,8 @@ def compute_classification_metrics(
         "accuracy": round(accuracy, 4),
         "macro_f1": round(macro_f1, 4),
         "weighted_f1": round(weighted_f1, 4),
-        "positive_f1": round(per_class[0], 4),
-        "neutral_f1": round(per_class[1], 4),
-        "negative_f1": round(per_class[2], 4),
+        "up_f1": round(per_class[0], 4),
+        "down_f1": round(per_class[1], 4),
     }
 
 

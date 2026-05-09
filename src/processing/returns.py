@@ -82,32 +82,27 @@ def fetch_returns(
     }
 
 
-def label_from_return(market_adj_return: float, threshold: float = 0.005) -> str:
-    """Convert a continuous market-adjusted return to a sentiment label.
+def label_from_return(market_adj_return: float, threshold: float = 0.0) -> str:
+    """Convert a market-adjusted return to a binary direction label.
 
-    Thresholds (default ±0.5%):
-      > +threshold  → "positive"
-      < -threshold  → "negative"
-      otherwise     → "neutral"
+    Per the project proposal, the classification target is the direction of
+    stock movement (up vs. down) relative to the market. Default threshold
+    of 0 makes the split a clean sign comparison.
 
     Args:
         market_adj_return: Market-adjusted return (fractional, e.g. 0.012).
-        threshold: Absolute boundary for positive/negative classification.
+        threshold: Boundary above which a return counts as "up".
 
     Returns:
-        One of "positive", "neutral", "negative".
+        "up" if market_adj_return > threshold else "down".
     """
-    if market_adj_return > threshold:
-        return "positive"
-    if market_adj_return < -threshold:
-        return "negative"
-    return "neutral"
+    return "up" if market_adj_return > threshold else "down"
 
 
 def build_returns_dataframe(
     transcript_records: list[dict],
     cache_path: Path = _RETURNS_CACHE,
-    threshold: float = 0.005,
+    threshold: float = 0.0,
 ) -> pd.DataFrame:
     """Build a DataFrame of market-adjusted returns for all transcripts.
 
@@ -125,7 +120,14 @@ def build_returns_dataframe(
     """
     if cache_path.exists():
         logger.info("Loading returns from cache: %s", cache_path)
-        return pd.read_csv(cache_path)
+        df = pd.read_csv(cache_path)
+        # Re-derive labels from the numeric returns so any change in
+        # label_from_return() takes effect on cached data without re-fetching.
+        for col, key in [("label_1d", "market_adj_1d"), ("label_3d", "market_adj_3d")]:
+            df[col] = df[key].apply(
+                lambda v: label_from_return(v, threshold) if pd.notna(v) else None
+            )
+        return df
 
     rows = []
     for rec in transcript_records:

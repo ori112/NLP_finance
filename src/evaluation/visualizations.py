@@ -50,7 +50,7 @@ def plot_sentiment_vs_returns(
     plot_df = df[[sentiment_col, return_col, label_col]].dropna()
 
     fig, ax = plt.subplots(figsize=(8, 6))
-    palette = {"positive": "#2ecc71", "neutral": "#95a5a6", "negative": "#e74c3c"}
+    palette = {"up": "#2ecc71", "down": "#e74c3c"}
 
     for label, group in plot_df.groupby(label_col):
         ax.scatter(
@@ -138,7 +138,7 @@ def plot_sentiment_distribution(
     counts = {}
     for col in label_cols:
         vc = df[col].value_counts()
-        counts[col] = {lbl: vc.get(lbl, 0) for lbl in ["positive", "neutral", "negative"]}
+        counts[col] = {lbl: vc.get(lbl, 0) for lbl in ["up", "down"]}
 
     count_df = pd.DataFrame(counts).T
 
@@ -147,15 +147,15 @@ def plot_sentiment_distribution(
         kind="bar",
         stacked=True,
         ax=ax,
-        color={"positive": "#2ecc71", "neutral": "#95a5a6", "negative": "#e74c3c"},
+        color={"up": "#2ecc71", "down": "#e74c3c"},
         edgecolor="white",
         width=0.6,
     )
 
     ax.set_xlabel("Model / Segment", fontsize=11)
     ax.set_ylabel("Number of Transcripts", fontsize=11)
-    ax.set_title("Sentiment Label Distribution by Model and Segment", fontsize=13, fontweight="bold")
-    ax.legend(title="Sentiment", fontsize=9, loc="upper right")
+    ax.set_title("Direction Label Distribution by Model and Segment", fontsize=13, fontweight="bold")
+    ax.legend(title="Direction", fontsize=9, loc="upper right")
     ax.tick_params(axis="x", rotation=30)
 
     _save(fig, output_path)

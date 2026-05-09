@@ -61,11 +61,7 @@ def extract_failure_cases(
     def _reason(row: pd.Series) -> str:
         pred = row[model_label_col]
         truth = row[ground_truth_col]
-        if pred == "positive" and truth == "negative":
-            return "false_positive"
-        if pred == "negative" and truth == "positive":
-            return "false_negative"
-        return "neutral_missed"
+        return f"predicted_{pred}_was_{truth}"
 
     mismatches["failure_reason"] = mismatches.apply(_reason, axis=1)
 

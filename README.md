@@ -91,14 +91,16 @@ Preprocessing produces **111 reliable PR/QA splits** (7 regex-primary + 104 Oper
 
 *(Populated after running `python main.py --mode analyze` on live data)*
 
-| Condition | Accuracy | Macro F1 | Pearson r (1d) | Pearson r (3d) |
-|---|---|---|---|---|
-| PR_LM | 0.3925 | 0.1986 | 0.050 | 0.077 |
-| QA_LM | 0.2150 | 0.1679 | -0.005 | 0.013 |
-| **PR_FINBERT** | **0.4673** | **0.2538** | **0.058** | **0.075** |
-| QA_FINBERT | 0.0748 | 0.0464 | -0.112 | -0.127 |
+**Task:** Binary stock-direction classification (up/down) relative to S&P 500, per project proposal.
 
-*n = 107 evaluable transcripts (111 reliable splits minus 4 dropped due to short segments). Pearson p-values all > 0.05 — correlations not statistically significant at this sample size.*
+| Condition | Accuracy | Macro F1 | up_F1 | down_F1 | Pearson r (1d) | Pearson r (3d) |
+|---|---|---|---|---|---|---|
+| PR_LM | 0.4673 | 0.3331 | 0.6323 | 0.0339 | 0.050 | 0.077 |
+| QA_LM | 0.5047 | 0.4332 | 0.6345 | 0.2319 | -0.005 | 0.013 |
+| **PR_FINBERT** | **0.5327** | **0.3953** | **0.6835** | 0.1071 | 0.058 | 0.075 |
+| QA_FINBERT | 0.5140 | 0.3560 | 0.6750 | 0.0370 | -0.112 | -0.127 |
+
+*n = 107 evaluable transcripts (111 reliable splits minus 4 dropped due to short segments). Down-direction F1 is consistently low because all four models favour "up" predictions — a documented limitation related to the bullish 2022–2023 sample and FinBERT's pre-training distribution. Pearson p-values all > 0.05 — correlations not statistically significant at this sample size.*
 
 ## CLI Reference
 

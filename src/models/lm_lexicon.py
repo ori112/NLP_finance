@@ -81,7 +81,7 @@ def compute_lm_score(tokens: list[str]) -> dict[str, float]:
           positive_ratio, negative_ratio, net_sentiment,
           uncertainty_ratio, litigious_ratio, constraining_ratio, n_tokens.
     """
-    if not tokens:
+    if len(tokens) == 0:
         return {
             "positive_ratio": 0.0,
             "negative_ratio": 0.0,
@@ -113,34 +113,28 @@ def compute_lm_score(tokens: list[str]) -> dict[str, float]:
     }
 
 
-def classify_sentiment(scores: dict[str, float], threshold: float = 0.01) -> str:
-    """Convert LM net_sentiment score to a three-class label.
+def classify_sentiment(scores: dict[str, float], threshold: float = 0.0) -> str:
+    """Map LM net_sentiment to a binary direction prediction (up/down).
 
-    Default threshold of 0.01 means net financial word frequency must differ
-    by at least 1 percentage point to be classified as positive or negative.
-    This threshold is swept in the evaluation phase (Phase 5) to find the
-    F1-optimal cutoff.
+    The proposal frames the task as binary stock-direction classification, so
+    threshold = 0 is the natural sign split: more positive financial words
+    than negative ones predicts "up", otherwise "down".
 
     Args:
         scores: Output of compute_lm_score().
-        threshold: Absolute boundary for positive/negative classification.
+        threshold: Boundary above which net_sentiment predicts "up".
 
     Returns:
-        One of "positive", "neutral", "negative".
+        "up" if net_sentiment > threshold else "down".
     """
-    net = scores["net_sentiment"]
-    if net > threshold:
-        return "positive"
-    if net < -threshold:
-        return "negative"
-    return "neutral"
+    return "up" if scores["net_sentiment"] > threshold else "down"
 
 
 def score_dataframe(
     df: pd.DataFrame,
     token_col: str,
     prefix: str = "lm",
-    threshold: float = 0.01,
+    threshold: float = 0.0,
 ) -> pd.DataFrame:
     """Apply LM scoring to every row in df[token_col].
 
